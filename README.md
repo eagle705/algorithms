@@ -1,7 +1,7 @@
 Algorithm
 ========
 
-### Algorithm
+# Algorithm
 leetcode & codility 가 좋다는 주변의 얘기를 듣고 바로 시작하게 되서 만든 Repository
 - 계획: 일단 1일 1문제 풀기?!
 - 목표: 중급은 꼭 다 풀수있어야함 :)
@@ -15,12 +15,12 @@ leetcode & codility 가 좋다는 주변의 얘기를 듣고 바로 시작하게
 |2|[Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)| [Python](./algorithms/python/addTwoNumbers)|Medium|
 |1|[Two Sum](https://leetcode.com/problems/two-sum/)| [Python](./algorithms/python/twoSum)|Easy|
 
-### 다시 풀 문제
+## 다시 풀 문제
 - https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 - https://leetcode.com/problems/rotate-image/
 - 
 
-### Coding Tips
+## Coding Tips
 - List.index도 좋지만 List.find가 더 편하다 index가 없을 경우에 -1 리턴하기 때문
 - 속도가 우선이면 메모리를 좀 낭비해도 dict으로 코딩하자
 - 제곱승은 pow(2, 31)도 되고 2**31도 된다
@@ -41,7 +41,7 @@ leetcode & codility 가 좋다는 주변의 얘기를 듣고 바로 시작하게
 - http://blog.samstdio.com/coding-test/
 - https://www.notion.so/580c3a42f21b49b497b7089f539a9f78
 
-### Python Tips
+## Python Tips
 - sort(), reverse() -> 이런건 객체를 반환하지 않음, sort는 기본적으로 오름차순
 - reversed 같은 식으로 하면 객체를 반환하지만 reversed 객체로 나오기때문에 list로 형변환 해줘야함
 - / : 나누기(소수점도 나옴), %: 나머지(떨어지는 나머지), //: 몫(곱해지는 텀)
@@ -71,7 +71,7 @@ leetcode & codility 가 좋다는 주변의 얘기를 듣고 바로 시작하게
 
 ---------
 
-### codility
+## Codility
 
 ```python
 # you can write to stdout for debugging purposes, e.g.
@@ -783,6 +783,7 @@ def solution(A):
 ```
 
 ----------
+## Leetcode
 
 ### 1. Two Sum, Example (Easy)
 
