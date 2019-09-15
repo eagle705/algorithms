@@ -1,8 +1,8 @@
-LeetCode
+Algorithm
 ========
 
-### LeetCode Algorithm
-leetcode가 좋다는 주변의 얘기를 듣고 바로 시작하게 되서 만든 Repository
+### Algorithm
+leetcode & codility 가 좋다는 주변의 얘기를 듣고 바로 시작하게 되서 만든 Repository
 - 계획: 일단 1일 1문제 풀기?!
 - 목표: 중급은 꼭 다 풀수있어야함 :)
 
@@ -59,6 +59,15 @@ leetcode가 좋다는 주변의 얘기를 듣고 바로 시작하게 되서 만�
 - for loop 두번 돌지말고 한번만 돌게끔.. 전체 합구해놓고 각 loop에서 처리해준다든지.. 이런식으로 가자 2*O(N)이 O(N^2) 보단 낫다
 - 원소 확인할때는 list 에 append해서 if in으로 하지말고 set() .add로 해서 확인하는게 훨씨인 빠름
 - [파이썬 내장함수 TimeComplexity 참고](https://wiki.python.org/moin/TimeComplexity), 보면 같은 x in s라도 list와 set은 복잡도가 다르고, 리스트의 경우 새로 생성하는거 자체가 O(n)임.. 굳이 생성안해도 되는거면 if로 비교하는게 훨씬 나음!
+- list -> set 바꾸는것도 time complexity n 들어감
+- 나누어 떨어지는 수 개수 세는 문제 같은 경우는 for loop 돌리지 말고 그냥 / 나 // 연산자로 몫 개수 세고 n mod k == 0인 경우 n 이 0인 경우도 고려해야하니 주의할 것!
+- itertools의 경우 yield로 반환하기 때문에 list로 감싸는것과 안감싸는게 차이가 좀많이 남 ```for _ in itertools.combinations(range(length), 3):``` [문서 참고](https://docs.python.org/2/library/itertools.html#itertools.combinations) 
+- O(N**2)를 O(N)으로 풀려면 수학적인 센스가 있어야되는 문제들이 몇개 있음 
+- stack 문제를 풀때는 마지막에 스택에 값이 남아있는지와, 스택에 값이 없는데 pop 하려고하는때 이 두 가지에 대해서 예외처리 해줘야함
+- pop은 왠만하면 바로 쓰지말고, [-1]로 인덱싱해서 쓰다가 조건이 딱 맞춰졌을때 pop으로 빼라 안 그러면 arr_length 때문에 while등에서 조건으로 쓸 경우 에러날 수 있음.. while문에서 쓰는 조건은 간단하게 하고, 차라리 True로 주고 안의 if 문으로 break 거는 처리를 하는게 더 편할 수 있음!
+- O(N)을 여러번 하는게 loop 안에서 한번 더 리스트 탐색해서 O(N**2) 만드는 것보다 나음
+- cumulative 하게 쌓을땐 list의 extend 기능을 활용해보자
+- 재귀는 리턴 조건이 명확할때만 써야!
 
 ---------
 
@@ -267,6 +276,502 @@ def solution(A):
         return A[-1] + 1
 ```
 
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    total_sum = 0
+    num_of_zero = 0
+    for i, a_elm in enumerate(A):
+        if a_elm == 0: 
+            num_of_zero += 1
+        else:
+            total_sum += num_of_zero * 1
+            
+        if total_sum > 1000000000:
+            return -1
+    return total_sum
+ 
+```
+
+- 일단 킵.. TimeComplexity 바꿔줘야함, list -> set 바꾸는것도 time complexity n 들어감 
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(S, P, Q):
+    # write your code in Python 3.6
+    letter_to_score = {
+        "A": 1,
+        "C": 2,
+        "G": 3,
+        "T": 4}
+    
+    len_arr = len(P)
+    
+    if len(set(S)) == 1:
+        return [letter_to_score[S[0]]] * len_arr
+    
+    # score_S = [letter_to_score[char] for char in S]
+    
+    list_of_save_min_by_pos = []
+    list_of_res = []
+    for i in range(len_arr):
+        start_idx = P[i]
+        end_idx = Q[i]
+        min_score = 9999
+        
+        for saved_start_idx, saved_end_idx in list_of_save_min_by_pos:
+            if  start_idx <= saved_start_idx and saved_end_idx <= end_idx:
+                min_score = 1
+                break
+        if min_score == 1:
+            list_of_res.append(min_score)
+        else:
+        
+            if end_idx == len_arr-1:
+                for s_elm in S[start_idx:]:
+                    min_score = letter_to_score[s_elm] if letter_to_score[s_elm] < min_score else min_score
+                    if min_score == 1:
+                        break
+    
+    
+            else:
+                for s_elm in S[start_idx:end_idx+1]:
+                    min_score = letter_to_score[s_elm] if letter_to_score[s_elm] < min_score else min_score
+                    if min_score == 1:
+                        break
+                
+            list_of_res.append(min_score)
+            if min_score == 1:
+                list_of_save_min_by_pos.append((start_idx, end_idx))
+    return list_of_res
+    
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    
+    # try O(n**2)
+    min_avg_slice = 9999
+    start_pos = None
+    len_arr = len(A)
+    for i in range(len_arr):
+        sum_slice = 0
+        for j in range(len_arr-i-1):
+            start_idx = i
+            end_idx = i+j+1
+            
+            len_slice = end_idx - start_idx + 1
+            
+            if j == 0:
+                if end_idx == len_arr-1:
+                    sum_slice = sum(A[start_idx:])
+                else:
+                    sum_slice = sum(A[start_idx:end_idx+1])
+            else:
+                sum_slice += A[end_idx]
+            
+            avg_slice = sum_slice / len_slice
+            
+            if avg_slice < min_avg_slice:
+                min_avg_slice = avg_slice
+                start_pos = start_idx
+                
+    return start_pos
+                
+                
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, B, K):
+    # write your code in Python 3.6
+    length = B-A+1
+    
+    count = 0
+    for i in range(length):
+        if (A + i) % K == 0:
+            count += 1
+    return count
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, B, K):
+    # write your code in Python 3.6
+    
+    if A == B:
+        if A % K == 0:
+            return 1
+        else:
+            return 0
+    
+    count_from_B = int(B / K)
+    count_from_A = int(A / K)
+        
+    if A % K == 0:
+        return count_from_B - count_from_A + 1
+    else:
+        return count_from_B - count_from_A
+```
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    A.sort()
+    
+    list_of_score = []
+    if A[0] < 0 and A[1] < 0 and A[-1] > 0:
+        list_of_score.append(A[0] * A[1] * A[-1])
+    
+    
+    list_of_score.append(A[-1] * A[-2] * A[-3])
+    list_of_score.sort()
+    return list_of_score[-1]
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    return len(list(set(A)))
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    A = [a_elm for a_elm in A if a_elm > 0]
+    # A.sort()
+    
+    length = len(A)
+    import itertools
+    
+    for p,q,r in itertools.combinations(range(length), 3):
+        if (A[p] + A[q] > A[r]) and (A[q] + A[r] > A[p]) and (A[r] + A[p] > A[q]):
+            return 1
+    return 0
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    
+    lower_list = []
+    upper_list = []
+    for i, a_elm in enumerate(A):
+        lower_list.append(i - a_elm)
+        upper_list.append(i + a_elm)
+        
+    lower_list.sort()
+    upper_list.sort()
+    j = 0
+    counter = 0
+    total_len = len(A)
+    for i in range(total_len):
+        while(j < total_len and lower_list[j] <= upper_list[i]): # if문 조건 순서도 중요하네..
+            # 0 인 경우는 1개 따져줘야되니 +1했다가 어차피 자기 자신은 제외(-1)하니까 그러려니하는 걸로
+            counter += j + 1 - 1  # 중복 아님
+            counter -= i # 이미 upper의 index로 세어버린 원들의 개수는 빼버림 # 중복 제거
+            j = j + 1
+            
+            if counter > 10000000:
+                return -1
+            
+    return counter
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(S):
+    # write your code in Python 3.6
+    list_of_left_brackets_stack = []
+    left_brackets = ['(', '{', '[']
+    right_brackets = [')', '}', ']']
+    left_to_right = {left_brackets[i]:right_brackets[i] for i in range(3)}
+    
+    for a_elm in S:
+        if a_elm in left_brackets:
+            list_of_left_brackets_stack.append(a_elm)
+        elif a_elm in right_brackets:
+            
+            # case many right
+            if len(list_of_left_brackets_stack) == 0:
+                return 0
+            else:
+                pop_left_brackets_val = list_of_left_brackets_stack.pop()
+                if a_elm != left_to_right[pop_left_brackets_val]:
+                    return 0
+    
+    # case many left
+    if len(list_of_left_brackets_stack) != 0:
+        return 0
+    else:
+        return 1
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, B):
+    # write your code in Python 3.6
+    upstream_alive_stack = []
+    downstream_alive_stack = []
+    
+    for i in range(len(A)):
+        if B[i] == 0:
+            upstream_alive_stack.append([i, A[i]])
+            while(len(downstream_alive_stack) != 0 and len(upstream_alive_stack) != 0):
+                
+                down_index, down_fish_size = downstream_alive_stack[-1]
+                up_index, up_fish_size = upstream_alive_stack[-1]
+                if down_index > up_index:
+                    break
+                if up_fish_size < down_fish_size:
+                    upstream_alive_stack.pop()
+                else:
+                    downstream_alive_stack.pop()
+
+        elif B[i] == 1:
+            downstream_alive_stack.append([i, A[i]])
+                
+    return len(upstream_alive_stack) + len(downstream_alive_stack)
+                    
+            
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(S):
+    # write your code in Python 3.6
+    left_brackets_stack = []
+    for s_elm in S:
+        if s_elm == '(':
+            left_brackets_stack.append(s_elm)
+        else:
+            if len(left_brackets_stack) == 0:
+                return 0
+            left_brackets_stack.pop()
+    if len(left_brackets_stack) != 0:
+        return 0
+    else:
+        return 1
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(H):
+    # write your code in Python 3.6
+    big_rectangle_stack = []
+    
+    num_of_blocks = 0
+    for h_elm in H:
+        big_rectangle_stack = [q for q in big_rectangle_stack if q <= h_elm]        
+        if h_elm in big_rectangle_stack:
+            pass
+        else:
+            big_rectangle_stack.append(h_elm)
+            num_of_blocks += 1
+        
+    return num_of_blocks
+    
+# 위에껀 속도가 좀 느림.. 아래껀 메모리를 좀 더 쓰는대신에 속도가 빠름
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(H):
+    # write your code in Python 3.6
+    big_rectangle_stack = []
+    dict_for_cotain_check = {}
+    
+    num_of_blocks = 0
+    for h_elm in H:
+        # big_rectangle_stack = [q for q in big_rectangle_stack if q <= h_elm]
+        while(True):
+            if len(big_rectangle_stack) != 0 and h_elm < big_rectangle_stack[-1]:
+                val = big_rectangle_stack.pop()
+                del dict_for_cotain_check[val]
+            else:
+                break
+            
+        if h_elm in dict_for_cotain_check:
+            pass
+        else:
+            big_rectangle_stack.append(h_elm)
+            num_of_blocks += 1
+            dict_for_cotain_check[h_elm] = 0 # it could be anything.
+        
+    return num_of_blocks    
+
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    import math
+    num_to_list_of_index = {}
+    num_to_count = {}
+    max_count = 0
+    max_num = -9999999999999999
+    
+    
+    if len(A) == 0:
+        return -1
+    
+    more_than_half_length = math.ceil(len(A)/2) if len(A)/2 != int(len(A)/2) else len(A)/2 + 1
+    
+    for i, a_elm in enumerate(A):
+        if a_elm in num_to_list_of_index:
+            num_to_list_of_index[a_elm].append(i)
+            num_to_count[a_elm] += 1
+        else:
+            num_to_list_of_index[a_elm] = [i]
+            num_to_count[a_elm] = 1
+    
+        if max_count < num_to_count[a_elm]:
+            max_count = num_to_count[a_elm]
+            max_num = a_elm
+    
+
+    if num_to_count[max_num] >= more_than_half_length:
+        return num_to_list_of_index[max_num][0]
+    else:
+        return -1
+```
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    num_to_list_of_index = {}
+    num_to_count = {}
+    max_num = -99999999999
+    max_count = 0
+    
+    # if len(A) == 1:
+    #     return 0
+
+    for i, a_elm in enumerate(A):
+        if a_elm not in num_to_list_of_index:
+            num_to_list_of_index[a_elm] = [i]
+            num_to_count[a_elm] = 1
+        else:
+            num_to_list_of_index[a_elm].append(i)
+            num_to_count[a_elm] += 1
+        
+        if max_count < num_to_count[a_elm]:
+            max_count = num_to_count[a_elm]
+            max_num = a_elm
+    
+    
+    if max_num in num_to_list_of_index:
+        list_of_max_num_index = num_to_list_of_index[max_num]
+    else:
+        list_of_max_num_index = None
+        max_count = 0
+        for num, list_of_index in num_to_list_of_index.items():
+            if max_count < len(list_of_index):
+                max_count = len(list_of_index)
+                list_of_max_num_index = list_of_index
+                
+    total_count_len = len(list_of_max_num_index)
+    total_len = len(A)
+    res_count = 0
+    
+    import math
+    # for i, max_num_index in enumerate(list_of_max_num_index):
+    #     left_len = max_num_index + 1
+    #     left_count = i + 1
+        
+    #     right_len = total_len - left_len
+    #     right_count = total_count_len - left_count
+        
+    #     left_more_than_half = int(left_len / 2) + 1 if int(left_len / 2) == left_len / 2 else math.ceil(left_len / 2)
+        
+    #     right_more_than_half = int(right_len / 2) + 1 if int(right_len / 2) == right_len / 2 else math.ceil(right_len / 2)
+        
+    #     if (left_count >= left_more_than_half) and (right_count >= right_more_than_half):
+    #         res_count += 1
+    
+    
+    left_count_arr = []
+    for i, max_num_index in enumerate(list_of_max_num_index):
+        
+        if i == len(list_of_max_num_index) - 1:
+            to_next_length = total_len - max_num_index 
+        else:
+            to_next_length = list_of_max_num_index[i+1] - list_of_max_num_index[i]
+        left_count_arr.extend([i + 1] * (to_next_length))
+    
+    # print("left_count_arr: ", left_count_arr)
+        
+            
+    for i in range(total_len):
+        left_len = i + 1
+        left_count = left_count_arr[i]
+        # left_count = 0
+        # for max_num_index in list_of_max_num_index:
+        #     if max_num_index <= i:
+        #         left_count += 1
+        #     else:
+        #         break
+        
+        right_len = total_len - left_len
+        right_count = total_count_len - left_count
+            
+        
+        left_more_than_half = int(left_len / 2) + 1 if int(left_len / 2) == left_len / 2 else math.ceil(left_len / 2)
+        
+        right_more_than_half = int(right_len / 2) + 1 if int(right_len / 2) == right_len / 2 else math.ceil(right_len / 2)
+        
+        if (left_count >= left_more_than_half) and (right_count >= right_more_than_half):
+            res_count += 1
+            
+    return res_count
+```
+
+```python
+```
+
+```python
+```
+
+```python
+```
 
 ```python
 ```
