@@ -36,6 +36,8 @@ leetcode & codility를 공부하며 기록하는 Repository
 - 어려운 문제는 작은문제 여러개로 쪼개져 있다고 생각하면 된다.
 - Time complexity가 높은 정답부터 낮은 정답으로 최적화하게끔 풀어나가는게 안전하다.
 - 소수 찾기 알고리즘은 ```Sieve of Eratosthenes``` 를 참고하자 (https://codility.com/media/train/9-Sieve.pdf)
+- 최대공약수 구하기: https://codility.com/media/train/10-Gcd.pdf
+- 합성수 조합 + 소수 테스트: https://codility.com/media/train/8-PrimeNumbers.pdf
 
 ## Python Tips
 - [파이썬을 파이썬 답게 강의](https://programmers.co.kr/learn/courses/4008)
