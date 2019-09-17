@@ -7,10 +7,10 @@ leetcode & codility를 공부하며 기록하는 Repository
 - 목표: 중급은 꼭 다 풀기
 
 ## Codility
-- [Codility summary](https://github.com/eagle705/tree/master/Codility)
+- [Codility summary](https://github.com/eagle705/algorithms/tree/master/Codility)
 
 ## Leetcode
-- [Leetcode summary](https://github.com/eagle705/tree/master/Leetcode)
+- [Leetcode summary](https://github.com/eagle705/algorithms/tree/master/Leetcode)
 -----------
 
 ## Coding Tips
