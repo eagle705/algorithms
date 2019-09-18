@@ -64,3 +64,7 @@ Train my coding skills with [codility lessons.](https://codility.com/programmers
     - [CountNonDivisible](./CountNonDivisible.md)
 * Euclidean algorithm
     - [ChocolatesByNumbers](./ChocolatesByNumbers.md)
+    - [CommonPrimeDivisors](.CommonPrimeDivisors.md)
+* Fibonacci numbers
+    - [Ladder](./Ladder.md)
+    -

@@ -35,9 +35,11 @@ leetcode & codility를 공부하며 기록하는 Repository
 - https://www.notion.so/580c3a42f21b49b497b7089f539a9f78
 - 어려운 문제는 작은문제 여러개로 쪼개져 있다고 생각하면 된다.
 - Time complexity가 높은 정답부터 낮은 정답으로 최적화하게끔 풀어나가는게 안전하다.
-- 소수 찾기 알고리즘은 ```Sieve of Eratosthenes``` 를 참고하자 (https://codility.com/media/train/9-Sieve.pdf)
-- 최대공약수 구하기: https://codility.com/media/train/10-Gcd.pdf
-- 합성수 조합 + 소수 테스트: https://codility.com/media/train/8-PrimeNumbers.pdf
+- 소수 찾기 알고리즘(```Sieve of Eratosthenes```): https://codility.com/media/train/9-Sieve.pdf
+- 최대공약수 구하기(Euclidean algorithm): https://codility.com/media/train/10-Gcd.pdf
+- 합성수 조합(Counting divisors) + 소수 테스트(Primality test): https://codility.com/media/train/8-PrimeNumbers.pdf
+- 가끔 헷갈릴 수 있는데 Binary Search와 Binary Search Tree(BST)는 완전 다른 것임..
+- 이진 탐색(Binary Search): https://codility.com/media/train/12-BinarySearch.pdf
 
 ## Python Tips
 - [파이썬을 파이썬 답게 강의](https://programmers.co.kr/learn/courses/4008)
