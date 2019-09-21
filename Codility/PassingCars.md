@@ -75,4 +75,31 @@ def solution(A):
     return total_sum
 ```
 
+
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N)
+* Link: https://app.codility.com/demo/results/trainingCR8EGF-WTY/
+* Code
+
+```python
+def solution(A):
+    # write your code in Python 3.6
+    total_count = 0
+    product_term = 0
+    for i, a_elm in enumerate(A):
+        if a_elm == 0:
+            product_term += 1
+        else:
+            total_count += product_term
+    
+    if total_count > 10**9:
+        return -1
+    else:
+        return total_count
+```
+
 ## Comment
+- 첫번째 풀이와 같다. 은연중에 기억하거나 생각의 회로가 똑같은듯..

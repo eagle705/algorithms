@@ -81,5 +81,31 @@ def solution(A):
         return 0
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N) or O(N * log(N))
+* Link: https://app.codility.com/demo/results/trainingGM5FK2-ZCA/
+* Code
+
+```Python
+def solution(A):
+    # write your code in Python 3.6
+    A.sort()
+    if A[0] != 1:
+        return 0
+    
+    prev_num = A[0]
+    for i, num in enumerate(A[1:]):
+        if num != prev_num + 1:
+            return 0
+        prev_num = num
+    return 1
+            
+```
+
 
 ## Comment
+- sorting해서 풀어서 일단 O(nlogn)일듯
+- 그 후에 이전꺼 저장해서 +1 한것과 다르면 리턴하는 식으로..간단히 해결

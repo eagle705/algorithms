@@ -30,6 +30,8 @@ class Solution { public int solution(int[] A); }
 
 that, given an array A describing N discs as explained above, returns the number of (unordered) pairs of intersecting discs. The function should return −1 if the number of intersecting pairs exceeds 10,000,000.
 
+![image](https://codility-frontend-prod.s3.amazonaws.com/media/task_static/number_of_disc_intersections/static/images/auto/0eed8918b13a735f4e396c9a87182a38.png)
+
 Given array A shown above, the function should return 11, as explained above.
 
 Assume that:
@@ -49,8 +51,9 @@ Elements of input arrays can be modified.
 ### First
 
 * Programming language: Python
-* Task score:
-* Analysis
+* Task score: 100%
+* Analysis: O(N*log(N)) or O(N)
+* Link: https://app.codility.com/demo/results/trainingTX7KDG-4Z8/
 * Code
 
 ```python
@@ -86,3 +89,15 @@ def solution(A):
 
 
 ## Comment
+- 솔직히 이문제는 너무 어렵다.. 이해가 잘 안됨..
+- 풀이 참조해서 풀었다. 하..
+- j개를 더해주는게 젤 이해 안됨..
+- 예제에서 겹치는건 아래와 같이해서 11개라는데 흠..
+
+```
+0, 1 / 0, 2 / 0, 4
+1, 2 / 1, 3 / 1, 4 / 1, 5
+2, 3 / 2, 4
+3, 4
+4, 5
+```

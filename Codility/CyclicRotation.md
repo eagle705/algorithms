@@ -56,4 +56,31 @@ def solution(A, K):
     return shift_arr
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis summary:
+* Link: https://app.codility.com/demo/results/training4Z6A25-NPY/
+* Code
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, K):
+    # write your code in Python 3.6
+    
+    if len(set(A)) == 1:
+        return A
+    
+    result = [0] * len(A)
+    for i in range(len(A)):
+        new_index = (i+K) % len(A)
+        result[new_index] = A[i]
+    return result
+```
+
 ## Comment
+- 첫번째 풀이와 큰 차이가 없다
+- 어차피 다 N개 만큼 옮겨야되니까.. K개씩 밀어서 옮기고 넘어가는건 mod를 사용~!

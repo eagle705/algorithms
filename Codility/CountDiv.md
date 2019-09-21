@@ -74,4 +74,26 @@ def solution(A, B, K):
 
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis
+  - The solution obtained perfect score.
+  - Detected time complexity: O(1)
+* Link: https://app.codility.com/demo/results/training9WZJJF-FJM/
+* Code
+
+```python
+def solution(A, B, K):
+    # write your code in Python 3.6
+    count_prev_A = (A-1) // K 
+    count_B = B // K
+    
+    return count_B - count_prev_A
+```
+
+
 ## Comment
+- 코드는 전에 비하면 훨씬 나아졌다
+- prefix_sum 기능으로 이전에 몇갠지 세고 현재 몇갠지 세서 빼줌으로써 총 개수를 구하면 됨

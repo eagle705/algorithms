@@ -5,6 +5,7 @@ Algorithm
 leetcode & codility를 공부하며 기록하는 Repository
 - 계획: 1일 1문제
 - 목표: 중급은 꼭 다 풀기
+- 방법: 연습할땐 '최대한 빨리'풀자라는게 머리 회전하는데 도움됨 아니면 세월아 네월아 풀어서..
 
 ## Codility
 - [Codility summary](https://github.com/eagle705/algorithms/tree/master/Codility)
@@ -12,6 +13,14 @@ leetcode & codility를 공부하며 기록하는 Repository
 ## Leetcode
 - [Leetcode summary](https://github.com/eagle705/algorithms/tree/master/Leetcode)
 -----------
+## Coding Test Mind 
+- 처음엔 좀 Greedy & 안전빵으로 풀어서 정답 확보해놓고 점차 개선하는 방향으로 해야 마음도 안정되고 하기 편하다. 시간이 좀 아깝더라도.. 그게 긴장되는 환경에서 더 잘 코딩하기에 좋음
+  - 그 후에 개선할 때는 개선하는것에 매우 매우 매우 집중해야한다
+  - 이미 한번 풀었다고 생각해서 은근 열심히 안하는 경우가 많아서..
+  - 코테의 핵심은 '문제해결능력'이다. 문제를 어떻게 해결하는지에 대한 아이디어 search 과정이 매우 중요함
+  - 중간결과물을 뭐 얻으려할지를 명확히 생각하는게 중요함
+- 시험 볼 때 쓸 수 있는 생각에 대한 인덱스나 코드 스니펫등을 갖고 있는게 중요할 듯
+- 말로 설명할 수 없으면 모르는 것
 
 ## Coding Tips
 - List.index도 좋지만 List.find가 더 편하다 index가 없을 경우에 -1 리턴하기 때문
@@ -40,9 +49,12 @@ leetcode & codility를 공부하며 기록하는 Repository
 - 합성수 조합(Counting divisors) + 소수 테스트(Primality test): https://codility.com/media/train/8-PrimeNumbers.pdf
 - 가끔 헷갈릴 수 있는데 Binary Search와 Binary Search Tree(BST)는 완전 다른 것임..
 - 이진 탐색(Binary Search): https://codility.com/media/train/12-BinarySearch.pdf
+- Caterpillar method: https://codility.com/media/train/13-CaterpillarMethod.pdf
+- Greedy Algorithm: https://codility.com/media/train/14-GreedyAlgorithms.pdf
 
 ## Python Tips
 - [파이썬을 파이썬 답게 강의](https://programmers.co.kr/learn/courses/4008)
+- [파이썬 팁 정리해놓은 글! 한번쯤 정독해야..!](https://realpython.com/python-itertools/)
 - sort(), reverse() -> 이런건 객체를 반환하지 않음, sort는 기본적으로 오름차순
 - reversed 같은 식으로 하면 객체를 반환하지만 reversed 객체로 나오기때문에 list로 형변환 해줘야함
 - / : 나누기(소수점도 나옴), %: 나머지(떨어지는 나머지), //: 몫(곱해지는 텀)
@@ -72,11 +84,16 @@ leetcode & codility를 공부하며 기록하는 Repository
 - max_slice 문제는 lower bound 0으로 셋팅하고 풀고 최대값이 0이하면 max()로 -값 리턴해주면됨. lower bound가 0 이라는건 새로 슬라이스 하겠다는 뜻임
 - 소수 찾을때 time complexity 줄이는 방법중 하나는 sqrt(N)을 해서 divider가 sqrt(N)보다 클때도 합성수가 없으면 소수로 리턴하는거다. 이게 왜 성립되냐면 합성수라면 sqrt(N)전에 반드시 합성수가 존재한다. 위의 경우는 왠만하면 다 잘 되는데 숫자 2(소수) 인 경우엔 인덱스에 따라 작동 안할 수가 있다.
 - 소수를 구분할때 속도를 위한 sqrt(N)으로 풀수도 있고 i*i < N 을 기준으로 풀수도 있다. 합성수 찾을때도 그 중간 값이 sqrt(N)이기 때문에 한번에 i 와 N // i 라는 합성수 2개를 찾으면 sqrt(N) 까지만 찾으면 된다. 그리고 합성수 찾을 때 if i == N // i 인 경우는 중복이니 조심 할 것!
+- [굳이 dict을 쓰지않고 list에 index로 접근한다면 list가 좀 더 빠름.. 데이터 크기에 따라서 20%까지도!](https://stackoverflow.com/questions/39192442/which-is-faster-a-dictionary-retrieve-or-a-list-indexing) (둘의 TimeComplexity는 O(1)로 같긴함)
+- [최대 연속 부분수열의 합을 구하는 4가지 방법 1](https://shoark7.github.io/programming/algorithm/4-ways-to-get-subarray-consecutive-sum) https://jungmonster.tistory.com/126
+- [최대 연속 부분수열의 합을 구하는 4가지 방법 2](https://jungmonster.tistory.com/126) 
+  - 최대 연속 부분수열에서 부분수열의 최대 값에 대한 upper bound는 모든 원소의 합이고 lower bound는 원소중 가장 큰 값인데 그 이유는 가장 큰 값이 다른 값이랑 더해지기라도 하면 그 값은 최대값을 갱신할 확률이 커지기 때문이다. 하지만 가장 큰 원소의 값만 남고 나머지 작은 값의 합이 가장 큰 원소보다 작다면 그것이 부분수열의 최대값이 될 수 있기 때문에 lowerbound는 부분수열의 원소중 가장 큰 값이 된다. 
 
 ## interview Tips
 - [Reverse Interview](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/blob/master/Reverse_Interview/README.md)
 
-
+## 읽어보면 좋은글
+- [알고리즘 공부, 어떻게 해야하나요?](https://baactree.tistory.com/52)
 
 ---------
 

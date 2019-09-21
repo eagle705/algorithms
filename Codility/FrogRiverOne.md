@@ -99,5 +99,31 @@ def solution(X, A):
     return res
 ```
 
+### Second
+
+* Programming language: python
+* Task score: 100%
+* Analysis: O(N)
+* Link: https://app.codility.com/demo/results/trainingHDNVQT-KSV/
+* Code
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(X, A):
+    # write your code in Python 3.6
+    leaf_dict = {}
+    count = 0
+    for i, a_elm in enumerate(A):
+        if a_elm not in leaf_dict:
+            leaf_dict[a_elm] = True
+            count += 1
+            if count == X:
+                return i
+    return -1
+```
 
 ## Comment
+- dict으로 원소가 있는지를 체크했다. List로 체크할 경우 O(n)이 걸려서.. 리스트로 쓰면 안된다
+- 그 밖에는 개수 맞춰줘서 조건 맞을때 리턴해주는 걸로 처리

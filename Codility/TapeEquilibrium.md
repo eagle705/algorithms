@@ -78,8 +78,37 @@ def solution(A):
     return min_abs
 ```
 
+### Second
 
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N)
+* Link: https://app.codility.com/demo/results/trainingZA36M4-Y5F/
+* Code
+
+```python
+def solution(A):
+    # write your code in Python 3.6
+    
+    prefix_sum = []
+    sum_num = 0
+    for a_elm in A:
+        sum_num += a_elm
+        prefix_sum.append(sum_num)
+    
+    min_abs_diff = 10**10
+    
+    for i in range(len(A)-1):
+        front_sum = prefix_sum[i]
+        end_sum = prefix_sum[-1] - front_sum
+        abs_diff = abs(front_sum - end_sum)        
+        # print("abs_diff: ", abs_diff)
+        if abs_diff < min_abs_diff:
+            min_abs_diff = abs_diff
+    return min_abs_diff
+```
 
 ### Comment
-
--
+- 첫번째는 점점 합치는거라 더 빠르긴할듯
+- 두번째는 prefix sum으로 풀어서 좀 더 편하긴함
+- 마지막인덱스는 빼줘야 두개의 구간으로 비교되는데 그거 한번 빼먹어서 런타임오류났었음.. 까먹지 말것

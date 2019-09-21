@@ -81,4 +81,25 @@ def solution(A):
     return list_of_score[-1]
 ```
 
+### First
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N*log(N))
+* Link: https://app.codility.com/demo/results/trainingRKC7YU-7SB/
+* Code
+
+```python
+def solution(A):
+    # write your code in Python 3.6
+    A.sort()
+    
+    left = A[0] * A[1] * A[-1]
+    right = A[-1] * A[-2] * A[-3]
+    
+    max_product = left if left > right else right
+    return max_product
+```
+
 ## Comment
+- 두번째코드가 첫번째보단 간단하나 원리는 같고 사실 0 값 체크를 안했으니 그리좋은 코드라 할순 없겠다

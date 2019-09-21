@@ -56,4 +56,25 @@ def solution(A):
         return A[-1] + 1
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N) or O(N * log(N))
+* Link: https://app.codility.com/demo/results/training8ZPPFV-GAE/
+* Code
+
+```python
+def solution(A):
+    # write your code in Python 3.6    
+    set_of_A = set(A)    
+    for i in range(1, len(A)+1):
+        if i not in set_of_A:
+            return i
+    return len(A)+1
+```
+
 ## Comment
+- 첫번째 풀이 처럼 굳이 정렬 안해도..되고 원소도 0 이상으로 뽑지 않아도 된다. 어차피 체크 리스트 만드는데 O(n) 이기 때문에 그냥 set으로 만들어주면 됨
+- 그 후에는 1~N개 까지 루프 돌려주고 거기서 안걸리면 N+1이 없는걸로 리턴해주면 됨
+

@@ -36,8 +36,9 @@ Elements of input arrays can be modified.
 ### First
 
 * Programming language: Python
-* Task score:
+* Task score: 100%
 * Analysis
+* Link: https://app.codility.com/demo/results/trainingXRNZK6-5VA/
 * Code
 
 ```python
@@ -46,7 +47,8 @@ Elements of input arrays can be modified.
 
 def solution(A):
     # write your code in Python 3.6
-    return len(list(set(A)))
+    return len(set(A))
 ```
 
 ## Comment
+- 바로 풀리지만.. 의도에 맞게했는가는 물음표

@@ -71,6 +71,35 @@ def solution(A):
             return num
 ```
 
-## Comment
+### Second
 
-다른 방법이 떠오르지도 않고 충분히 고민할 시간을 투자하지 못했다.
+* Programming language: Python
+* Task score: 100%
+* Analysis summary: O(N) or O(N*log(N))
+* Link: https://app.codility.com/demo/results/trainingSYUMCZ-9H3/
+* Code
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    
+    # 그냥 맵에서 카운트 해보자
+    num_to_count = {}
+    for i, a_elm in enumerate(A):
+        if a_elm not in num_to_count:
+            num_to_count[a_elm] = 1
+        else:
+            num_to_count[a_elm] += 1
+    
+    for num, count in num_to_count.items():
+        if count % 2 != 0:
+            return num
+            
+```
+
+## Comment
+- 처음이랑 두번째 풀이가 똑같은게 함정..
+- 나머지는 even number라고 나와있어서 if N % 2 != 0 으로 테스트해서 결과 뽑았다

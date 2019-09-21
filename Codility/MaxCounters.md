@@ -140,5 +140,38 @@ def solution(N, A):
     return res_list
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N + M)
+* Link: https://app.codility.com/demo/results/training4893EK-KNN/
+* Code
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(N, A):
+    # write your code in Python 3.6
+    count_arr = [0] * N
+    max_count = 0
+    prev_max_count = 0
+    for i, a_elm in enumerate(A):
+        if a_elm <= N:
+            count_arr[a_elm-1] += 1
+            if max_count < count_arr[a_elm-1]:
+                max_count = count_arr[a_elm-1]
+        else:
+            if prev_max_count != max_count:
+                count_arr = [max_count] * N
+                prev_max_count = max_count
+    return count_arr
+```
+
+
+
 
 ## Comment
+- 두번째랑 첫번째풀이 마지막이랑은 코드가 같다. 조금 더 두번째께 깔끔해진거 같긴함
+- max_count 일때 배열을 새로 생성하는게 O(n) 걸리기 때문에 숫자가 많으면 안좋아서 pre_max_count랑 같은지 비교해서 효율적으로 생성하는게 performance 항목에서 포인트임!

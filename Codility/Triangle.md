@@ -75,4 +75,40 @@ def solution(A):
     return 0
 ```
 
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(N*log(N))
+* Link: https://app.codility.com/demo/results/trainingGBR7BY-ZKJ/
+* Code
+
+```python
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A):
+    # write your code in Python 3.6
+    
+    A.sort()
+    A = [a_elm for a_elm in A if a_elm >0]
+    
+    N = len(A)
+    if N <3:
+        return 0
+    
+    for i in range(N - 2):
+        # if A[i+2] + A[i+1] > A[i]: # always True
+        # if A[i+2] + A[i] > A[i+1]: # always True
+        # if A[i] + A[i+1] > A[i+2]: # should be checked
+        if A[i] + A[i+1] > A[i+2]: # 나머지 인덱스를 비교하기보다 가장 큰거 두개가 확률이 제일 큼.. 큰게 되야 작은것도 될 가능성이 있으니까   
+            return 1
+    return 0
+```
+
 ## Comment
+- 그냥 itertools로 풀면 general하게 풀리겠지만 시간이 오래걸림
+- 잘 풀려면 수학을 또 이해해야함.. 생각해보면 알고리즘문제지만.. 코드짜고 루프 효율적으로 돌리는 스킬뿐만 아니라 수학적인 센스로 해결할 수 있는걸 물어보는 듯
+- 핵심은 정렬해놓고 나면 삼각형 만족 조건 3개중 2개는 이미 만족된 상황이라는 것
+- 나머지 한개는 if A[i] + A[i+1] > A[i+2]: 인데, 이 경우의 경우 A[i]와 A[i+1]을 쓸수 밖에 없는건 이것보다 작은건 어차피 A[i+2] 보다 클 가능성이 더 적기 때문이다. 큰 것끼리 비교하는게 젤 가능성이 높으니.
+- 쉽다면 쉬웠지만.. 생각없이 풀면 TimeComplexity가 높게 나올 수 있는 문제였음

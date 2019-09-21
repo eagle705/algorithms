@@ -55,6 +55,26 @@ def solution(X, Y, D):
         return count+1
 ```
 
-### Comment
 
--
+### Second
+
+* Programming language: Python
+* Task score: 100%
+* Analysis: O(1)
+* Link: https://app.codility.com/demo/results/trainingFMVXKM-SQE/
+* Code
+
+```python
+def solution(X, Y, D):
+    # write your code in Python 3.6
+    total_d = Y-X
+    if (total_d / D) == int(total_d / D):
+        return int(total_d / D)
+    else:
+        return int(total_d / D) + 1
+```
+
+### Comment
+- 첫번째 풀이가 더 나았던거 같다
+- return형으로 total_d / D 이렇게만 했더니 float라고 에러가 떳다. 로컬의 인터프리터에서는 int형이라는데 흠.. 암튼 int로 감싸서 리턴해주는게 나을듯
+- 두번째 풀이에서는 그냥 start point를 0으로 셋팅해주고 풀었다

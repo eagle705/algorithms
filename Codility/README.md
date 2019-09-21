@@ -21,12 +21,12 @@ Train my coding skills with [codility lessons.](https://codility.com/programmers
 * Iterations
     - [BinaryGap](./BinaryGap.md)
 * Arrays
-    - [CyclicRotation](./CyclicRotation.md)
     - [OddOccurrencesInArray](./OddOccurrencesInArray.md)
+    - [CyclicRotation](./CyclicRotation.md)
 * Time Complexity
     - [FrogJmp](./FrogJmp.md)
-    - [TapeEquilibrium](./TapeEquilibrium.md)
-    - [PermMissingElem](./PermMissingElem.md)    
+    - [PermMissingElem](./PermMissingElem.md) 
+    - [TapeEquilibrium](./TapeEquilibrium.md)   
 * Counting Elements
     - [PermCheck](./PermCheck.md)
     - [FrogRiverOne](./FrogRiverOne.md)
@@ -67,4 +67,8 @@ Train my coding skills with [codility lessons.](https://codility.com/programmers
     - [CommonPrimeDivisors](.CommonPrimeDivisors.md)
 * Fibonacci numbers
     - [Ladder](./Ladder.md)
-    -
+* Caterpillar method
+    - [CountDistinctSlices](./CountDistinctSlices.md)    
+* Greedy algorithms
+    - [TieRopes](./TieRopes.md)
+    - [MaxNonoverlappingSegments](./MaxNonoverlappingSegments.md)
