@@ -21,6 +21,9 @@ leetcode & codility를 공부하며 기록하는 Repository
   - 중간결과물을 뭐 얻으려할지를 명확히 생각하는게 중요함
 - 시험 볼 때 쓸 수 있는 생각에 대한 인덱스나 코드 스니펫등을 갖고 있는게 중요할 듯
 - 말로 설명할 수 없으면 모르는 것
+- 처음문제는 워밍업일 수 있고 뒤로갈수록 어려워질 수 있는데 이거 남들도 그러니까 고려해서 풀어야함
+- 보통 테스트 케이스가 코너 포인트에 대해서도 모두 점검하기 때문에 얘네에 대한 테스트케이스는 따로 만들어놔야함!
+- 다 맞자는 마인드로 해야 - _-;; 그나마 점수가 잘나옴
 
 ## Coding Tips
 - List.index도 좋지만 List.find가 더 편하다 index가 없을 경우에 -1 리턴하기 때문
@@ -54,6 +57,7 @@ leetcode & codility를 공부하며 기록하는 Repository
 
 ## Python Tips
 - [파이썬을 파이썬 답게 강의](https://programmers.co.kr/learn/courses/4008)
+- [파이썬 코드를 효율적으로 작성하기](https://deepwelloper.tistory.com/113?category=813724)
 - [파이썬 팁 정리해놓은 글! 한번쯤 정독해야..!](https://realpython.com/python-itertools/)
 - sort(), reverse() -> 이런건 객체를 반환하지 않음, sort는 기본적으로 오름차순
 - reversed 같은 식으로 하면 객체를 반환하지만 reversed 객체로 나오기때문에 list로 형변환 해줘야함
