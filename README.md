@@ -95,10 +95,14 @@ leetcode & codility를 공부하며 기록하는 Repository
 
 ## interview Tips
 - [Reverse Interview](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/blob/master/Reverse_Interview/README.md)
+- [김태훈님 인터뷰질문 정리](https://docs.google.com/document/d/10bJK8S4T7sBIP-pzdQm9xRpW0HcLsrh6D047pE_kFE8/edit?fbclid=IwAR1rXwkQNkcOdneA-MK-FY5R735UhVOFaCjev1FlhHy1qRszJ5J95wIDXaA)
 
 ## 읽어보면 좋은글
 - [알고리즘 공부, 어떻게 해야하나요?](https://baactree.tistory.com/52)
-
+- [포트폴리오・이력서, 개발자의 포트폴리오・이력서 작성법, 면접을 잘 보는 법](https://gmlwjd9405.github.io/2018/05/04/how-to-write-a-resume-for-a-developer.html)
+- [iOS 신입 개발자로 취직하기 위해 내가 한 노력들 1 : 이력서](https://medium.com/@esung/ios-%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C-%EC%B7%A8%EC%A7%81%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%B4-%EB%82%B4%EA%B0%80-%ED%95%9C-%EB%85%B8%EB%A0%A5%EB%93%A4-1-%EC%9D%B4%EB%A0%A5%EC%84%9C-3991b0dd0ffd)
+- [유다시티가 알려주는 신입 개발자 취업하기](https://brunch.co.kr/@imagineer/254)
+- [비전공 신입 개발자로 입사하기](https://brunch.co.kr/@imagineer/198)
 ---------
 
 ## Reference Repo
