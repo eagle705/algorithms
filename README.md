@@ -94,6 +94,7 @@ leetcode & codility를 공부하며 기록하는 Repository
   - 최대 연속 부분수열에서 부분수열의 최대 값에 대한 upper bound는 모든 원소의 합이고 lower bound는 원소중 가장 큰 값인데 그 이유는 가장 큰 값이 다른 값이랑 더해지기라도 하면 그 값은 최대값을 갱신할 확률이 커지기 때문이다. 하지만 가장 큰 원소의 값만 남고 나머지 작은 값의 합이 가장 큰 원소보다 작다면 그것이 부분수열의 최대값이 될 수 있기 때문에 lowerbound는 부분수열의 원소중 가장 큰 값이 된다. 
 
 ## interview Tips
+- [Technical Interview Guidelines for beginners](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 - [Reverse Interview](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/blob/master/Reverse_Interview/README.md)
 - [김태훈님 인터뷰질문 정리](https://docs.google.com/document/d/10bJK8S4T7sBIP-pzdQm9xRpW0HcLsrh6D047pE_kFE8/edit?fbclid=IwAR1rXwkQNkcOdneA-MK-FY5R735UhVOFaCjev1FlhHy1qRszJ5J95wIDXaA)
 
