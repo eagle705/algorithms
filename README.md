@@ -7,6 +7,9 @@ leetcode & codility를 공부하며 기록하는 Repository
 - 목표: 중급은 꼭 다 풀기
 - 방법: 연습할땐 '최대한 빨리'풀자라는게 머리 회전하는데 도움됨 아니면 세월아 네월아 풀어서..
 
+## 파이썬자료구조와알고리즘
+- [파이썬자료구조와알고리즘 summary](https://github.com/eagle705/algorithms/tree/master/파이썬자료구조와알고리즘)
+
 ## Codility
 - [Codility summary](https://github.com/eagle705/algorithms/tree/master/Codility)
 
@@ -14,6 +17,10 @@ leetcode & codility를 공부하며 기록하는 Repository
 - [Leetcode summary](https://github.com/eagle705/algorithms/tree/master/Leetcode)
 -----------
 ## Coding Test Mind 
+- 어떤 문제를 볼때 어떤 기법으로 풀어야겠다 라고 생각할 수 있어함
+  - 알고리즘으로 풀리는 문제가 있고
+  - 특정한 조건, 규칙으로 풀리는 문제가 있음
+- ```Corner point 검사는 필수중에 필수 ㅠㅠㅠㅠㅠㅠ```
 - 처음엔 좀 Greedy & 안전빵으로 풀어서 정답 확보해놓고 점차 개선하는 방향으로 해야 마음도 안정되고 하기 편하다. 시간이 좀 아깝더라도.. 그게 긴장되는 환경에서 더 잘 코딩하기에 좋음
   - 그 후에 개선할 때는 개선하는것에 매우 매우 매우 집중해야한다
   - 이미 한번 풀었다고 생각해서 은근 열심히 안하는 경우가 많아서..
@@ -54,6 +61,8 @@ leetcode & codility를 공부하며 기록하는 Repository
 - 이진 탐색(Binary Search): https://codility.com/media/train/12-BinarySearch.pdf
 - Caterpillar method: https://codility.com/media/train/13-CaterpillarMethod.pdf
 - Greedy Algorithm: https://codility.com/media/train/14-GreedyAlgorithms.pdf
+- 알고리즘 잘 모를땐 여기검색: https://www.geeksforgeeks.org/
+- BigO cheatsheet: https://www.bigocheatsheet.com/
 
 ## Python Tips
 - [파이썬을 파이썬 답게 강의](https://programmers.co.kr/learn/courses/4008)
@@ -92,18 +101,28 @@ leetcode & codility를 공부하며 기록하는 Repository
 - [최대 연속 부분수열의 합을 구하는 4가지 방법 1](https://shoark7.github.io/programming/algorithm/4-ways-to-get-subarray-consecutive-sum) https://jungmonster.tistory.com/126
 - [최대 연속 부분수열의 합을 구하는 4가지 방법 2](https://jungmonster.tistory.com/126) 
   - 최대 연속 부분수열에서 부분수열의 최대 값에 대한 upper bound는 모든 원소의 합이고 lower bound는 원소중 가장 큰 값인데 그 이유는 가장 큰 값이 다른 값이랑 더해지기라도 하면 그 값은 최대값을 갱신할 확률이 커지기 때문이다. 하지만 가장 큰 원소의 값만 남고 나머지 작은 값의 합이 가장 큰 원소보다 작다면 그것이 부분수열의 최대값이 될 수 있기 때문에 lowerbound는 부분수열의 원소중 가장 큰 값이 된다. 
+- [파이썬의 Asterisk(*) 이해하기](https://mingrammer.com/understanding-the-asterisk-of-python/)
+- ```Range```를 잘 이용하는게 중요함
+- itertools의 ```combinations``` 함수에서는 input seq의 order가 바뀐 조합이 나오지 않음. input seq의 order가 보존됨.h
+
 
 ## interview Tips
 - [Technical Interview Guidelines for beginners](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
 - [Reverse Interview](https://github.com/JaeYeopHan/Interview_Question_for_Beginner/blob/master/Reverse_Interview/README.md)
 - [김태훈님 인터뷰질문 정리](https://docs.google.com/document/d/10bJK8S4T7sBIP-pzdQm9xRpW0HcLsrh6D047pE_kFE8/edit?fbclid=IwAR1rXwkQNkcOdneA-MK-FY5R735UhVOFaCjev1FlhHy1qRszJ5J95wIDXaA)
 
+## CV Tips
+- [이력서 - 1분의 싸움](https://blog.naver.com/PostView.nhn?blogId=wodory&logNo=221676841351&redirect=Dlog&widgetTypeCall=true&fbclid=IwAR2cz08sXkxNVkLsKTY6qjRxXIORmUBoqL50lsRbT5RKvsT7jG8KwHRxMtc)
+- [CV format](https://github.com/eagle705/Awesome-CV)
+
 ## 읽어보면 좋은글
+- [알고리즘 학습에 대한 조언(강추)](https://edykim.com/ko/post/advice-on-learning-algorithms/)
 - [알고리즘 공부, 어떻게 해야하나요?](https://baactree.tistory.com/52)
 - [포트폴리오・이력서, 개발자의 포트폴리오・이력서 작성법, 면접을 잘 보는 법](https://gmlwjd9405.github.io/2018/05/04/how-to-write-a-resume-for-a-developer.html)
 - [iOS 신입 개발자로 취직하기 위해 내가 한 노력들 1 : 이력서](https://medium.com/@esung/ios-%EC%8B%A0%EC%9E%85-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A1%9C-%EC%B7%A8%EC%A7%81%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%B4-%EB%82%B4%EA%B0%80-%ED%95%9C-%EB%85%B8%EB%A0%A5%EB%93%A4-1-%EC%9D%B4%EB%A0%A5%EC%84%9C-3991b0dd0ffd)
 - [유다시티가 알려주는 신입 개발자 취업하기](https://brunch.co.kr/@imagineer/254)
 - [비전공 신입 개발자로 입사하기](https://brunch.co.kr/@imagineer/198)
+- [Tmux 셋팅](https://github.com/gpakosz/.tmux)
 ---------
 
 ## Reference Repo
