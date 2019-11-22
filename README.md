@@ -10,12 +10,58 @@ leetcode & codility를 공부하며 기록하는 Repository
 ## 파이썬자료구조와알고리즘
 - [파이썬자료구조와알고리즘 summary](https://github.com/eagle705/algorithms/tree/master/파이썬자료구조와알고리즘)
 
+## 패스트캠퍼스 알고리즘
+- [패스트캠퍼스 알고리즘 summary](https://github.com/eagle705/algorithms/tree/master/패스트캠퍼스알고리즘)
+
+
 ## Codility
 - [Codility summary](https://github.com/eagle705/algorithms/tree/master/Codility)
 
 ## Leetcode
 - [Leetcode summary](https://github.com/eagle705/algorithms/tree/master/Leetcode)
 -----------
+
+## 대표 유형
+- [최대공약수 최소공배수](http://lonpeach.com/2017/11/12/Euclidean-algorithm/): 유클리드호제법
+- [LIS](https://leetcode.com/problems/increasing-triplet-subsequence/): empty->insert->binary search (increasing이 포인트라 가능)
+- 소수 찾기: min(a,b) < m
+- 비트연산자
+- 문자열 단어 단위로 반전하기: nest for loop
+- 애너그램(아나그램, Anagram):Counter
+- 주사위 합계 경로: Counter, defaultDict with two for loop
+- [Longest Substring with At Least K Repeating Characters](https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/discuss/430194/Python-time-O(n)-98-space-O(n)-100-with-explanation): 재귀로 쪼개서 k미만인건 없애고, 재귀넣어서 다시 길이체크하는 방식! 방법은 재귀임..! 그냥 풀면 잘안됨
+- [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/discuss/315175/python-dp-bottom-up-beats-99.55): 얘는 dfs로 풀어야함.. 나중엔 dp 섞어주면 좋을듯
+- [Word break](https://leetcode.com/problems/word-break/discuss/43808/Simple-DP-solution-in-Python-with-description): 얘는 dp로 풀어야함..dfs로하면 시간 초과뜸
+
+## What is Coding Test?
+- 주어진 상황을 코딩할 수 있는가를 보는 시험(파싱, 탐색, 조건문등)
+- [1] 주어진 시간동안 [2]주어진 문제를 [3]요구사항에 맞게 [4]코딩하여 [5]Accpet이나 점수를 받는 시험
+- 추상화, 절차적 사고, 구현능력 이 요구됨
+- 대표유형
+  - 구현: 파싱, 해싱 정렬, 시뮬레이션
+  - 탐색: 탐색(BFS, DFS), 완전탐색(백트래킹)
+  - 자료구조: 스택, 큐, 힙
+  - 알고리즘: Greedy, DP, 이분탐색, ...
+- 구현 조건이 복잡한 코테 == 국어시험이라고 생각
+- 풀이 프로세스
+  - 종이에 조건들 리스트업
+  - 모든 조건들 사용
+  - 플로우 차트 그려보기
+  - 문장에 따라 바로 공백있는 함수만들어서 템플릿화 (e.g. def check(): pass)
+  - 디버깅 + 멘탈관리
+  - 필수 알고리즘은 암기(다다익선)
+  - 설명하면서 풀어보기 / 유형은 많이 풀기
+  - 쉽고 간단한 문제 많이 풀면서 본인만의 스타일 만들기(어려운 문제는 쉽고 간단한 문제 여러개 붙여서 만든거니)
+  - 연습에는 억지로 최적화 X, 꼭 정해 풀이 알기 -> 보고 다시 스스로 풀어보기
+    - 정해보고 난 뒤 특정 시간 이후에 다시 풀어보기!
+  - 제일 중요하는건 많이 푸는 것
+- 코테의 구성
+  - 제한 및 대소관계 (이상, 이하, 초과, 미만, ...)
+  - 예외처리 (단 없는 경우 -1을 출력한다)
+  - 입력과 출력 (공백, 양식, 순서, 정렬유무)
+  - 시간제한과 메모리 제한
+
+
 ## Coding Test Mind 
 - 어떤 문제를 볼때 어떤 기법으로 풀어야겠다 라고 생각할 수 있어함
   - 알고리즘으로 풀리는 문제가 있고
@@ -103,7 +149,10 @@ leetcode & codility를 공부하며 기록하는 Repository
   - 최대 연속 부분수열에서 부분수열의 최대 값에 대한 upper bound는 모든 원소의 합이고 lower bound는 원소중 가장 큰 값인데 그 이유는 가장 큰 값이 다른 값이랑 더해지기라도 하면 그 값은 최대값을 갱신할 확률이 커지기 때문이다. 하지만 가장 큰 원소의 값만 남고 나머지 작은 값의 합이 가장 큰 원소보다 작다면 그것이 부분수열의 최대값이 될 수 있기 때문에 lowerbound는 부분수열의 원소중 가장 큰 값이 된다. 
 - [파이썬의 Asterisk(*) 이해하기](https://mingrammer.com/understanding-the-asterisk-of-python/)
 - ```Range```를 잘 이용하는게 중요함
-- itertools의 ```combinations``` 함수에서는 input seq의 order가 바뀐 조합이 나오지 않음. input seq의 order가 보존됨.h
+- itertools의 ```combinations``` 함수에서는 input seq의 order가 바뀐 조합이 나오지 않음. input seq의 order가 보존됨.
+- [파이썬 코드 시각화 해보고 싶다면? 파이썬 튜터!](http://pythontutor.com/visualize.html#mode=display)
+- 나머지 연산은 ```divmod(9, 2) # output: 몫, 나머지``` 쓰는게 속편함
+- [generator 설명, 함수를 끝내지 않고 yield부터 다시시작하는 프로그램~](https://bluese05.tistory.com/56)
 
 
 ## interview Tips

@@ -725,3 +725,411 @@ class Solution:
 
 # set으로 하면 글자 개수 차이나는건 못잡음
 ```
+
+
+### 347. Top K Frequent Elements
+
+```
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+
+Input: nums = [1], k = 1
+Output: [1]
+
+Note:
+
+- You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+- Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+```
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        import operator
+        i = 0
+        res = []        
+        num_to_count = {}
+        for num in nums:
+            if num in num_to_count:
+                num_to_count[num] += 1
+            else:
+                num_to_count[num] = 1
+        
+        num_to_count = sorted(num_to_count.items(), key=operator.itemgetter(1), reverse=True)
+        
+        for num, count in num_to_count:
+            i += 1
+            if i > k:
+                break
+            res.append(num)        
+        return res
+        
+# --- Solution --- #
+"""
+The second step is to build a heap. The time complexity of adding an element in a heap is \mathcal{O}(\log(k))O(log(k)) and we do it N times that means \mathcal{O}(N \log(k))O(Nlog(k)) time complexity for this step.
+
+The last step to build an output list has
+\mathcal{O}(k \log(k))O(klog(k)) time complexity.
+
+In Python there is a method nlargest in heapq library (check here the source code) which has the same \mathcal{O}(k \log(k))O(klog(k)) time complexity and combines two last steps in one line.
+"""
+
+
+class Solution:
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """ 
+        count = collections.Counter(nums)   
+        return heapq.nlargest(k, count.keys(), key=count.get) 
+
+            
+```
+
+```
+Runtime: 100 ms, faster than 98.75% of Python3 online submissions for Top K Frequent Elements.
+Memory Usage: 17.4 MB, less than 6.25% of Python3 online submissions for Top K Frequent Elements.
+```
+
+### 300. Longest Increasing Subsequence (LIS)
+
+```
+Given an unsorted array of integers, find the length of longest increasing subsequence.
+
+Example:
+
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+Note:
+
+- There may be more than one LIS combination, it is only necessary for you to return the length.
+- Your algorithm should run in O(n^2) complexity.
+Follow up: Could you improve it to O(n log n) time complexity?
+```
+
+```python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        
+        if nums == []:
+            return 0
+        
+        # return self.naive_LIS(nums)
+        return self.dp_LIS(nums)
+                
+    def naive_LIS(self, nums):
+        import itertools                
+        for length in range(len(nums), 0, -1):
+            c = itertools.combinations(nums, length)
+            for combination_case in c:                
+                if list(combination_case) == sorted(set(combination_case)): # 같은걸 포함하냐 안하냐는 여기서 결정
+                    return length            
+                
+    def dp_LIS(self, nums):
+        L = [1] * len(nums) # 현재 index까지의 최장 증가 수열 길이
+        
+        for cur, val in enumerate(nums):
+            for pre in range(cur):
+                if nums[pre] < val: # 같은걸 포함하냐 안하냐는 여기서 결정                   
+                    L[cur] = max(L[cur], 1 + L[pre]) # L[cur]을 계속 업데이트함
+
+        # LIS print
+        # res = []
+        # prev = L[0]
+        # prev_idx = 0
+        # for i, l in enumerate(L):
+        #     if l > prev:
+        #         if res == []:
+        #                 res.append(nums[prev_idx])
+        #                 res.append(nums[i])
+        #         else:
+        #             res.append(nums[i])
+        #     prev = l
+        #     prev_idx = i            
+        # print(res)      
+        
+        return max(L)
+        
+# --- Solution --- #            
+```
+
+```
+Runtime: 1028 ms, faster than 48.98% of Python3 online submissions for Longest Increasing Subsequence.
+Memory Usage: 12.9 MB, less than 100.00% of Python3 online submissions for Longest Increasing Subsequence.
+```
+
+### 334. Increasing Triplet Subsequence
+- bisect algorithm(이진탐색, 이미 정렬된 리스트를 활용, 삽입하면서 정렬하면 이 검색쓸수있음)을 이용해서 LIS만 뽑아내는게 사실상 naive, dp, bisect 중에서 제일 빠름 
+- 비어있는 리스트에 삽입하며, 구간 내에서 있어야 할곳으로 삽입하되, 대체가능한 요소들은 대체해서 입력하는 방식
+- bisect와 bisect_right은 같은거고 반대되는게 bisect_left임
+    - bisect 모듈설명
+        - 주어진 리스트 a와 값 x 가 있을 때, x 가 위치해야 할 인덱스를 구하는 함수
+        - 그리고 같은 조건에서 값 x를 올바른 위치에 삽입하는 함수
+- ref: https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221389084876&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+- ref: https://soooprmx.com/archives/8722
+- 이진 탐색 모듈 자체는, 일단 값이 겹치게 되면 hi에서 들고 있게됨, lo == hi가 되는순간 hi에 갖고 있는 값이 lo에도 갖고 있을 수 있게되니 리턴됨
+
+```python
+def bisect_left(a, x, lo=0, hi=None):
+    """Return the index where to insert item x in list a, assuming a is sorted.
+    The return value i is such that all e in a[:i] have e < x, and all e in
+    a[i:] have e >= x.  So if x already appears in the list, a.insert(x) will
+    insert just before the leftmost x already there.
+    Optional args lo (default 0) and hi (default len(a)) bound the
+    slice of a to be searched.
+    """
+
+    if lo < 0:
+        raise ValueError('lo must be non-negative')
+    if hi is None:
+        hi = len(a)
+    while lo < hi:
+        mid = (lo+hi)//2
+        # Use __lt__ to match the logic in list.sort() and in heapq
+        if a[mid] < x: lo = mid+1
+        else: hi = mid
+    return lo
+
+mylist = [1, 2, 3, 7, 9, 11, 33]
+print(bisect_left(mylist, 3))
+```
+
+
+```
+Given an unsorted array return whether an increasing subsequence of length 3 exists or not in the array.
+
+Formally the function should:
+
+Return true if there exists i, j, k
+such that arr[i] < arr[j] < arr[k] given 0 ≤ i < j < k ≤ n-1 else return false.
+Note: Your algorithm should run in O(n) time complexity and O(1) space complexity.
+
+Example 1:
+
+Input: [1,2,3,4,5]
+Output: true
+Example 2:
+
+Input: [5,4,3,2,1]
+Output: false
+```
+
+```python
+class Solution:
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        from bisect import bisect_left        
+        res = []
+        for val in nums:
+            
+            idx = bisect_left(res, val) # return index to insert val into arr
+            if idx == len(res):
+                res.append(val)
+            else:                
+                res[idx] = val
+            
+            if len(res) == 3:
+                return True
+        else:
+            return False
+# --- Solution --- #            
+```
+
+```
+Runtime: 52 ms, faster than 97.18% of Python3 online submissions for Increasing Triplet Subsequence.
+Memory Usage: 13.4 MB, less than 88.89% of Python3 online submissions for Increasing Triplet Subsequence.
+```
+
+
+### 395. Longest Substring with At Least K Repeating Characters
+- 재귀로 풀어야함.. 재귀로 쪼개서 각 substring이 조건 만족하는지 보고, 만족하는 경우에 리턴하고, 리턴된애들중에서 가장 길이가 큰애들만 저장해가면서 업데이트하면되고 (업데이트 조건이 늘 어렵단말야..)
+- Find the length of the longest substring T of a given string (consists of lowercase letters only) such that every character in T appears no less than k times.
+
+```
+Example 1:
+
+Input:
+s = "aaabb", k = 3
+
+Output:
+3
+
+The longest substring is "aaa", as 'a' is repeated 3 times.
+Example 2:
+
+Input:
+s = "ababbc", k = 2
+
+Output:
+5
+
+The longest substring is "ababb", as 'a' is repeated 2 times and 'b' is repeated 3 times.
+```
+
+```python
+class Solution:
+    def longestSubstring(self, s: str, k: int) -> int:
+        
+        if len(s) < k:
+            return 0
+        
+        if k < 2:
+            return len(s)
+        
+        from collections import Counter
+        counter = Counter(s)
+        
+        partitions = []
+        left = 0
+        for right in range(len(s)):
+            if counter[s[right]] < k:
+                substring = s[left:right]
+                partitions.append(substring)
+                left = right+1
+        partitions.append(s[left:])
+        
+        if len(partitions) == 1:
+            return len(partitions[0])
+        
+        res = 0
+        for part_elm in partitions:
+            res = max(res, self.longestSubstring(part_elm, k))
+            
+        return res
+```
+
+```
+Runtime: 24 ms, faster than 99.59% of Python3 online submissions for Longest Substring with At Least K Repeating Characters.
+Memory Usage: 12.9 MB, less than 100.00% of Python3 online submissions for Longest Substring with At Least K Repeating Characters.
+```
+
+### 131. Palindrome Partitioning
+- 전형적인 dfs 문제였음
+- Given a string s, partition s such that every substring of the partition is a palindrome.
+- Return all possible palindrome partitioning of s.
+
+
+
+```
+Example:
+
+Input: "aab"
+Output:
+[
+  ["aa","b"],
+  ["a","a","b"]
+]
+```
+
+```python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        
+        self.res = []
+    
+        def dfs(word, chuncks): # 새로 들어오는애는 짤라서 들어오는 애라, 0부터 새로들어온애의 길이에 대한 i 값으로 시작
+
+            if len(word) == 0: # 다 가면 저장해놓고, 종료조건임~!
+                self.res.append(chuncks[:]) # deep copy도 중요했고~
+                # print(chuncks)                
+
+            for i in range(1, len(word)+1):
+                sliced = word[0:i]
+                if sliced != sliced[::-1]:
+                    continue
+
+                chuncks.append(sliced) # 끝까지 갔다가
+                dfs(word[i:], chuncks)
+                chuncks.pop() # 다 가면 한개씩 다시 빼서 스택정리~ (스택은 가는 길을 저장해놓는것일뿐)
+        dfs(s, [])
+
+        return self.res
+```
+
+```python
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        self.res = []        
+        def dfs(word, list_of_path):
+            
+            if len(word) == 0:
+                self.res.append(list_of_path[:])
+                # print(self.res)
+            
+            for i in range(1, len(word)+1):
+                sliced = word[0:i]
+                if is_pal(sliced):
+                    list_of_path.append(sliced)
+                    dfs(word[i:], list_of_path)
+                    list_of_path.pop()
+                else:
+                    continue
+        
+        dfs(s, [])
+        return self.res
+        
+def is_pal(s: str):
+    if s == s[::-1]: return True
+    else: return False
+```
+
+```
+Runtime: 72 ms, faster than 91.89% of Python3 online submissions for Palindrome Partitioning.
+Memory Usage: 12.9 MB, less than 100.00% of Python3 online submissions for Palindrome Partitioning.
+```
+
+### 139. Word Break
+- 전형적인 dp 문제였음
+- Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+
+
+```
+Note:
+
+The same word in the dictionary may be reused multiple times in the segmentation.
+You may assume the dictionary does not contain duplicate words.
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+```
+
+```python
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        dp = [False] * len(s)        
+        
+        for i in range(0, len(s)):            
+            for word in wordDict:
+                # 마지막은 스타트 조건임, dp의 True 위치에 따라 많은 조합이 가능함(이전에 체크했던)
+                if word in s[i-(len(word)-1):i+1] and (dp[i-len(word)] is True or i-len(word)==-1):
+                    dp[i] = True
+                    
+        # print(dp)
+        return dp[-1]
+                        
+```
+
+
+```
+Runtime: 32 ms, faster than 97.51% of Python3 online submissions for Word Break.
+Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for Word Break.
+```
